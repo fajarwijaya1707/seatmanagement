@@ -1,0 +1,38 @@
+body{
+    background: #f4f4f4;
+}
+
+/* header */
+#header{
+    background: #cccccc;
+    padding-top: 10px;
+    margin-bottom: 15px;
+}
+#glyph-header{
+    margin-bottom: 13px;
+    widows: 30px;
+    height: 30px;
+}
+
+/* breadcrumb */
+
+
+/* main */
+#glyph-main{
+    margin-bottom: 3px;
+    widows: 15px;
+    height: 15px;
+}
+
+/* card */
+.card-body > div > div > h2{
+    margin-top: 20px;
+}
+#glyph-card{
+    margin-bottom: 13px;
+    widows: 10px;
+    height: 30px;
+}
+.table{
+    margin-top: 20px;
+}
