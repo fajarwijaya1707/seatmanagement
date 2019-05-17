@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
-use App\Http\Requests;
+//use App\Http\Requests;
 
-class kursictrl extends Controller
+class KursiController extends Controller
 {
     public function tambahkursi()
 {
@@ -28,11 +30,11 @@ public function cek(Request $request)
 {
   
   $nim=$request->code;
-   $mahasiswa = DB::table('mahasiswa')->where('nim',$nim)->get();
-    if ($mahasiswa == true)
+  $mahasiswa = DB::table("mahasiswa")->where('nim',$nim)->get();
+    if (!empty($mahasiswa[0]))
     {
       $mhs = DB::table('booking')->where('status',$nim)->get();
-      if ($mhs != true)
+      if (empty($mhs[0]))
       {
 
     $kursi = DB::table('kursi')->orderBy('id_kursi','asc')->get();
@@ -143,6 +145,28 @@ public function cek(Request $request)
    
       return view('simple');
    
+  }
+
+  public function print()
+  {
+
+      try {
+          // Enter the share name for your printer here, as a smb:// url format
+          $connector = new WindowsPrintConnector("smb://Guest@DESKTOP-ACLFPAN/print");
+          //$connector = new WindowsPrintConnector("smb://Guest@computername/Receipt Printer");
+          //$connector = new WindowsPrintConnector("smb://FooUser:secret@computername/workgroup/Receipt Printer");
+          //$connector = new WindowsPrintConnector("smb://User:secret@computername/Receipt Printer");
+          
+          /* Print a "Hello world" receipt" */
+          $printer = new Printer($connector);
+          $printer -> text("Hello World!\n");
+          $printer -> cut();
+          
+          /* Close printer */
+          $printer -> close();
+      } catch (Exception $e) {
+          echo "Couldn't print to this printer: " . $e -> getMessage() . "\n";
+      }
   }
 
 }

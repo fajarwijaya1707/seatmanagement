@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/admin', function () {
+    return view('auth.login');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout',  function () {
+    return view('auth.login');});
 
-Route::get('/dashboard','DashboardController@index');
+Route::get('/home', 'DashboardController@index')->name('home');
 
 Route::get('/mahasiswa','MahasiswaController@index');
 
@@ -31,6 +32,12 @@ Route::get('/mahasiswa/{id}/edit','MahasiswaController@edit');
 
 Route::post('/mahasiswa/{id}/update','MahasiswaController@update');
 
+Route::get('/hadir','TamuController@index');
+
 Route::get('/kursi', 'KursiController@tambahkursi');
+
 Route::post('/kursi/update', 'KursiController@cek');
+
 Route::get('/', 'KursiController@scan');
+
+Route::get('/test', 'KursiController@print');

@@ -10,26 +10,6 @@
     <li class="active">Presence</li>
 @endsection
 
-@section('main-list')
-    <div class="list-group">
-        <a href="/dashboard" class="list-group-item list-group-item-action">
-            <img id="glyph-main" src="/assets/svg/si-glyph-chart-column.svg"/> Dashboard
-        </a>
-        <a href="/hadir" class="list-group-item list-group-item-action active">
-            <img id="glyph-main" src="/assets/svg/si-glyph-person-checked.svg"/> Presence
-        </a>
-        <a href="/mahasiswa" class="list-group-item list-group-item-action">
-            <img id="glyph-main" src="/assets/svg/si-glyph-person-public.svg"/> Graduates
-        </a>
-        <a href="/log" class="list-group-item list-group-item-action">
-            <img id="glyph-main" src="/assets/svg/si-glyph-document-bullet-list.svg"/> Logs
-        </a>
-        <a href="/setting" class="list-group-item list-group-item-action">
-            <img id="glyph-main" src="/assets/svg/si-glyph-gear.svg"/> Setting
-        </a>
-    </div>
-@endsection
-
 @section('main-card')
     <div class="card">
         <div class="card-header font-weight-bold">
@@ -39,8 +19,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <!-- Search form -->
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <form action='{{ url()->current() }}' method='GET' class="form-inline">
+                        <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search" value="{{ request('keyword') }}">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
@@ -55,8 +35,15 @@
                         <th>NAMA</th>
                         <th>NO. KURSI</th>
                     </tr>
-                    
+                    @foreach($data_tamu as $no => $tamu)
+                    <tr>
+                        <td>{{$no + $data_tamu->firstItem()}}</td>
+                        <td>{{$tamu->status}}</td>
+                        <td>Segmen {{$tamu->segmen}} baris ke-{{$tamu->baris}} no.{{$tamu->nomor}}</td>
+                    </tr>
+                    @endforeach
                 </table>
+                {{ $data_tamu->links() }}
             </div>
         </div>
     </div>
