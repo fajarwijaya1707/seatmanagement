@@ -8,5 +8,5 @@ class Booking extends Model
 {
     protected $table = 'booking';
     protected $primaryKey = 'id_booking';
-    protected $fillable = ['id_booking','segmen','baris','status'];
+    protected $fillable = ['id_booking','segmen','baris','status','checkin'];
 }

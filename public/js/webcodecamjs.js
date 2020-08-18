@@ -15,7 +15,7 @@ var WebCodeCamJS = function(element) {
     var mediaDevices = window.navigator.mediaDevices;
     mediaDevices.getUserMedia = function(c) {
         return new Promise(function(y, n) {
-            (window.navigator.getUserMedia || window.navigator.mozGetUserMedia || window.navigator.webkitGetUserMedia).call(navigator, c, y, n);
+            (navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia).call(navigator, c, y, n);
         });
     }
     HTMLVideoElement.prototype.streamSrc = ('srcObject' in HTMLVideoElement.prototype) ? function(stream) {

@@ -1,0 +1,1 @@
+<?pp header('location:public/');

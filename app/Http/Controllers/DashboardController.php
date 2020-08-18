@@ -9,6 +9,7 @@ class DashboardController extends Controller
     public function index()
     {
         $count_mhs = \App\Mahasiswa::count();
-        return view('dashboard.dashboard')->with('count_mhs', $count_mhs);;
+        $count_tamu = \App\Tamu::count();
+        return view('dashboard.dashboard',['count_mhs' => $count_mhs, 'count_tamu' => $count_tamu]);
     }
 }

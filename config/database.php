@@ -40,6 +40,25 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        // 'mysql' => [
+        //     'driver' => 'mysql',
+        //     'host' => env('DB_HOST', 'localhost'),
+        //     'port' => env('DB_PORT', '2083'),
+        //     'database' => env('DB_DATABASE', 'hmkkus_seatmanagement'),
+        //     'username' => env('DB_USERNAME', 'hmkkus'),
+        //     'password' => env('DB_PASSWORD', 'manusiasoda'),
+        //     'unix_socket' => env('DB_SOCKET', ''),
+        //     'charset' => 'utf8mb4',
+        //     'collation' => 'utf8mb4_unicode_ci',
+        //     'prefix' => '',
+        //     'prefix_indexes' => true,
+        //     'strict' => true,
+        //     'engine' => null,
+        //     'options' => extension_loaded('pdo_mysql') ? array_filter([
+        //         PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+        //     ]) : [],
+        // ],
+
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -58,6 +77,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+
 
         'pgsql' => [
             'driver' => 'pgsql',
@@ -110,6 +130,30 @@ return [
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
+
+    // 'redis' => [
+
+    //     'client' => env('REDIS_CLIENT', 'predis'),
+
+    //     'options' => [
+    //         'cluster' => env('REDIS_CLUSTER', 'predis'),
+    //     ],
+
+    //     'default' => [
+    //         'host' => env('REDIS_HOST', 'localhost'),
+    //         'password' => env('REDIS_PASSWORD','manusiasoda'),
+    //         'port' => env('REDIS_PORT', 2083),
+    //         'database' => env('REDIS_DB', 0),
+    //     ],
+
+    //     'cache' => [
+    //         'host' => env('REDIS_HOST', 'localhost'),
+    //         'password' => env('REDIS_PASSWORD', 'manusiasoda'),
+    //         'port' => env('REDIS_PORT', 2083),
+    //         'database' => env('REDIS_CACHE_DB', 1),
+    //     ],
+
+    // ],
 
     'redis' => [
 
